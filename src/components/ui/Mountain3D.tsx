@@ -43,7 +43,7 @@ function Scene() {
     const visibleHeight = 2 * Math.tan(fov / 2) * camZ;
     const scale = (visibleHeight * 4.5) / size.y;
 
-    modelRef.current.scale.set(scale, scale, -scale);
+    modelRef.current.scale.setScalar(scale);
     modelRef.current.position.set(-center.x * scale, -center.y * scale, -center.z * scale);
     modelRef.current.rotation.set(0, 0, Math.PI / 4);
     modelRef.current.updateMatrixWorld(true);
