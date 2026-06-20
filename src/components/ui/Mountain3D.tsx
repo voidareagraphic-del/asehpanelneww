@@ -6,14 +6,13 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 function Scene() {
-  const { scene } = useGLTF("/images/PRODUCT-SITE.glb");
+  const { scene } = useGLTF("/images/PRODUCT SITE.glb");
   const { scene: camScene } = useGLTF("/images/product2.glb");
   const modelRef  = useRef<THREE.Group>(null);
   const pivotRef  = useRef<THREE.Group>(null);
   const { scene: threeScene, camera } = useThree();
   const scrollRef   = useRef(0);
   const currentRotRef = useRef(0);
-  const didSetupRef = useRef(false);
 
   useEffect(() => {
     threeScene.background = new THREE.Color(0x080810);
@@ -22,14 +21,7 @@ function Scene() {
   }, [threeScene]);
 
   useEffect(() => {
-    didSetupRef.current = false;
-  }, [scene, camScene, camera]);
-
-  useFrame(() => {
-    if (didSetupRef.current) return;
     if (!modelRef.current || !pivotRef.current) return;
-
-    didSetupRef.current = true;
 
     const mountainMesh = scene.getObjectByName("Mountain");
     const box = mountainMesh
@@ -65,7 +57,7 @@ function Scene() {
       "YXZ"
     );
     camera.quaternion.setFromEuler(euler);
-  });
+  }, [scene, camScene, camera]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -97,22 +89,11 @@ export function Mountain3D() {
         gl={{ antialias: true, alpha: false }}
         camera={{ position: [0, 4, 40], fov: 32 }}
       >
-        {/* نور محیطی */}
         <ambientLight intensity={2.0} color="#ffffff" />
-
-        {/* Key light — سفید گرم از بالا-جلو-راست */}
         <directionalLight position={[4, 6, 3]} intensity={5.0} color="#fff5e0" />
-
-        {/* Fill light — آبی سرد از چپ */}
         <directionalLight position={[-5, 2, 2]} intensity={3.0} color="#a0c4ff" />
-
-        {/* Rim light — از پشت */}
         <directionalLight position={[-2, -1, -6]} intensity={3.0} color="#6ee7f7" />
-
-        {/* نور زمین */}
         <pointLight position={[0, -4, 2]} intensity={3.0} color="#ff9f43" distance={20} />
-
-        {/* نور جلو — مستقیم روی محصول */}
         <pointLight position={[0, 0, 8]} intensity={4.0} color="#ffffff" distance={20} />
         <Suspense fallback={null}>
           <Scene />
@@ -122,5 +103,5 @@ export function Mountain3D() {
   );
 }
 
-useGLTF.preload("/images/PRODUCT-SITE.glb");
+useGLTF.preload("/images/PRODUCT SITE.glb");
 useGLTF.preload("/images/product2.glb");
