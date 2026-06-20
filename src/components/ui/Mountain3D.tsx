@@ -6,7 +6,7 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 function Scene() {
-  const { scene } = useGLTF("/images/PRODUCT SITE.glb");
+  const { scene } = useGLTF("/images/PRODUCT-SITE.glb");
   const { scene: camScene } = useGLTF("/images/product2.glb");
   const modelRef  = useRef<THREE.Group>(null);
   const pivotRef  = useRef<THREE.Group>(null);
@@ -117,5 +117,5 @@ export function Mountain3D() {
   );
 }
 
-useGLTF.preload("/images/PRODUCT SITE.glb");
+useGLTF.preload("/images/PRODUCT-SITE.glb");
 useGLTF.preload("/images/product2.glb");
