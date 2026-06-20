@@ -18,7 +18,7 @@ const LanguageContext = createContext<LanguageContextValue>({
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+  const [lang, setLangState] = useState<Lang>("fa");
 
   const setLang = (l: Lang) => {
     setLangState(l);
@@ -34,8 +34,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         setLangState(saved);
         document.documentElement.dir = saved === "fa" ? "rtl" : "ltr";
         document.documentElement.lang = saved === "fa" ? "fa" : "en";
+      } else {
+        document.documentElement.dir = "rtl";
+        document.documentElement.lang = "fa";
       }
-    } catch {}
+    } catch {
+      document.documentElement.dir = "rtl";
+      document.documentElement.lang = "fa";
+    }
   }, []);
 
   return (
