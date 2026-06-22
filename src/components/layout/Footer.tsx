@@ -25,8 +25,8 @@ export function Footer() {
     <footer className="relative bg-[#080808]">
       <BrandBarFull height={4} />
 
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-10 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 mb-8 md:mb-16">
 
           {/* Column 1: Brand */}
           <div className="flex flex-col gap-6">
@@ -42,9 +42,10 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Link columns */}
+          {/* Link columns — 3 sections in 2-col grid on mobile */}
+          <div className="grid grid-cols-2 md:contents gap-8 md:gap-0 col-span-1 md:col-span-1">
           {(["Products", "Technology", "Company"] as const).map((section) => (
-            <div key={section}>
+            <div key={section} className="md:block">
               <div className="flex items-center gap-2 mb-6">
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-white/80">{t.footer.sections[section]}</span>
                 <div className="h-px flex-1 ml-1" style={{ background: `${ACCENT_COLORS[section]}50` }} />
@@ -65,6 +66,7 @@ export function Footer() {
               </ul>
             </div>
           ))}
+          </div>
         </div>
 
         {/* Bottom bar */}

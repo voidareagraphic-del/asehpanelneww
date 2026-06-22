@@ -62,16 +62,16 @@ export function Blog() {
   const { t } = useLanguage();
 
   return (
-    <section id="insights" className="relative py-32 bg-[#0D0D0D]">
+    <section id="insights" className="relative py-16 md:py-32 bg-[#0D0D0D]">
       <div className="section-divider absolute top-0 left-0 right-0" />
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-        <AnimateIn className="mb-16">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <AnimateIn className="mb-8 md:mb-16">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 md:gap-6">
             <div>
               <SectionLabel text={t.blog.label} accent="ice" className="mb-5" />
               <BrandBar width="120px" height={3} className="mb-6" />
-              <h2 className="text-display-xl font-black text-white leading-tight">
+              <h2 className="text-2xl md:text-display-xl font-black text-white leading-tight">
                 {t.blog.headline1}<br />
                 <span className="text-white/30">{t.blog.headline2}</span>
               </h2>

@@ -161,7 +161,7 @@ export function FireShield() {
   }, []);
 
   return (
-    <section id="fire-shield" ref={sectionRef} className="relative py-32 bg-[#0A0A0A] overflow-hidden">
+    <section id="fire-shield" ref={sectionRef} className="relative py-16 md:py-32 bg-[#0A0A0A] overflow-hidden">
       <div className="section-divider absolute top-0 left-0 right-0" />
 
       {/* Sparks canvas */}
@@ -218,18 +218,18 @@ export function FireShield() {
       />
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative" style={{ zIndex: 2 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
 
           {/* Left: Content */}
           <div>
             <AnimateIn delay={0}>
               <SectionLabel text={t.fireShield.label} accent="purple" className="mb-5" />
               <BrandBar width="120px" height={3} className="mb-8" />
-              <h2 className="text-display-xl font-black text-white leading-tight mb-6">
+              <h2 className="text-2xl md:text-display-xl font-black text-white leading-tight mb-4 md:mb-6">
                 {t.fireShield.headline1}<br />
                 <span className="text-white/30">{t.fireShield.headline2}</span>
               </h2>
-              <p className="text-base text-steel leading-relaxed mb-8 max-w-lg">{t.fireShield.body}</p>
+              <p className="text-sm md:text-base text-steel leading-relaxed mb-6 md:mb-8 max-w-lg">{t.fireShield.body}</p>
 
               {/* Char layer visual indicator */}
               <div className="mb-8 p-4 rounded-xl bg-surface/50 border border-white/[0.05]">
@@ -243,7 +243,7 @@ export function FireShield() {
                   <div className="w-[8%] bg-[#1A1009]" />
                   <div className="w-[12%] rounded-r bg-[#2A2A2A]" />
                 </div>
-                <div className="flex justify-between mt-2 font-mono text-[0.55rem] text-muted">
+                <div className="hidden sm:flex justify-between mt-2 font-mono text-[0.55rem] text-muted">
                   <span>Steel facer</span>
                   <span style={{ color: "#8B5EA4" }}>Char barrier</span>
                   <span style={{ color: "#E89030" }}>PIR core — intact</span>
@@ -253,7 +253,7 @@ export function FireShield() {
               </div>
 
               {/* Fire properties */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-6 md:mb-10">
                 {t.fireShield.properties.map((p, i) => {
                   const Icon = PROPERTY_ICONS[i];
                   return (

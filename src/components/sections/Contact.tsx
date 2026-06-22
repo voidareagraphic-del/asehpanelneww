@@ -62,23 +62,23 @@ export function Contact() {
   const inputClass = "w-full bg-transparent border-b border-white/[0.12] focus:border-[#2D4FA3] text-white text-sm py-3 outline-none transition-colors duration-300 placeholder:text-muted font-light";
 
   return (
-    <section id="contact" className="relative py-32 bg-[#0A0A0A]">
+    <section id="contact" className="relative py-16 md:py-32 bg-[#0A0A0A]">
       <div className="section-divider absolute top-0 left-0 right-0" />
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24">
 
           {/* Left: Info */}
           <AnimateIn>
             <SectionLabel text={t.contact.label} accent="blue" className="mb-5" />
             <BrandBar width="120px" height={3} className="mb-8" />
-            <h2 className="text-display-xl font-black text-white leading-tight mb-6">
+            <h2 className="text-2xl md:text-display-xl font-black text-white leading-tight mb-4 md:mb-6">
               {t.contact.headline1}<br />
               <span className="text-white/30">{t.contact.headline2}</span>
             </h2>
-            <p className="text-base text-steel leading-relaxed mb-12 max-w-md">{t.contact.body}</p>
+            <p className="text-sm md:text-base text-steel leading-relaxed mb-6 md:mb-12 max-w-md">{t.contact.body}</p>
 
-            <div className="flex flex-col gap-6 mb-12">
+            <div className="flex flex-col gap-4 md:gap-6 mb-6 md:mb-12">
               {t.contact.contactItems.map((item, i) => {
                 const Icon = CONTACT_ICONS[i];
                 const color = CONTACT_COLORS[i];
@@ -130,7 +130,7 @@ export function Contact() {
             <div className="rounded-2xl overflow-hidden"
               style={{ background: "rgba(20,20,20,0.8)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.06)" }}>
               <BrandBarFull height={3} />
-              <div className="p-8 lg:p-10">
+              <div className="p-5 lg:p-10">
                 <h3 className="text-lg font-bold text-white mb-8">{t.contact.formTitle}</h3>
 
                 {sent ? (
@@ -146,8 +146,8 @@ export function Contact() {
                     </div>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-5 md:gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-8">
                       <div>
                         <label className="font-mono text-[0.6rem] uppercase tracking-widest text-muted block mb-2">{t.contact.name}</label>
                         <input type="text" className={inputClass} placeholder={t.contact.namePlaceholder}
