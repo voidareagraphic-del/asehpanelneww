@@ -19,7 +19,7 @@
 :root {
   --font-inter: "Inter", system-ui, sans-serif;
   --font-jetbrains: "JetBrains Mono", monospace;
-  --font-vazirmatn: "Abar", "Vazirmatn", system-ui, sans-serif;
+  --font-abar: "Abar", system-ui, sans-serif;
   --brand-green:  #7AB648;
   --brand-blue:   #2D4FA3;
   --brand-purple: #8B5EA4;
@@ -132,7 +132,7 @@ body {
 
 /* Persian / RTL support */
 [dir="rtl"] {
-  font-family: var(--font-vazirmatn), system-ui, sans-serif;
+  font-family: "Abar", system-ui, sans-serif;
   line-height: 2;
 }
 [dir="rtl"] .font-mono,
