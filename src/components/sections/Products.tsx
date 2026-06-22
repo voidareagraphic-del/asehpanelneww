@@ -77,28 +77,41 @@ function ProductCard({ product, viewSpecs }: { product: Product; viewSpecs: stri
         />
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col flex-1 p-3 md:p-6 gap-2 md:gap-4">
-        <div className="flex items-start justify-between gap-1 md:gap-3">
+      {/* Mobile content */}
+      <div className="flex flex-col items-center text-center p-2 gap-1.5 md:hidden">
+        <span className="font-mono text-[0.55rem] uppercase tracking-widest" style={{ color }}>{product.code}</span>
+        <h3 className="text-xs font-bold text-white leading-tight">{product.name}</h3>
+        <Link
+          href={`/products/${slug}`}
+          className="flex items-center gap-0.5 text-[0.6rem] font-semibold mt-0.5"
+          style={{ color }}
+        >
+          {viewSpecs} <ArrowRight size={8} />
+        </Link>
+      </div>
+
+      {/* Desktop content */}
+      <div className="hidden md:flex flex-col flex-1 p-6 gap-4">
+        <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="flex items-center gap-1 md:gap-2 mb-1 md:mb-1.5">
-              <AsteriskMark size={10} />
-              <span className="font-mono text-[0.55rem] md:text-[0.65rem] uppercase tracking-widest" style={{ color }}>{product.code}</span>
+            <div className="flex items-center gap-2 mb-1.5">
+              <AsteriskMark size={12} />
+              <span className="font-mono text-[0.65rem] uppercase tracking-widest" style={{ color }}>{product.code}</span>
             </div>
-            <h3 className="text-sm md:text-lg font-bold text-white leading-tight">{product.name}</h3>
-            <p className="text-[0.6rem] md:text-xs text-muted mt-0.5">{product.subtitle}</p>
+            <h3 className="text-lg font-bold text-white leading-tight">{product.name}</h3>
+            <p className="text-xs text-muted mt-0.5">{product.subtitle}</p>
           </div>
           <div
-            className="flex-shrink-0 rounded-lg px-1.5 md:px-2.5 py-0.5 md:py-1 font-mono text-[0.55rem] md:text-[0.65rem] tracking-wider"
+            className="flex-shrink-0 rounded-lg px-2.5 py-1 font-mono text-[0.65rem] tracking-wider"
             style={{ background: `${color}18`, color, border: `1px solid ${color}30` }}
           >
             {product.thickness}
           </div>
         </div>
 
-        <p className="hidden md:block text-sm text-steel leading-relaxed">{product.description}</p>
+        <p className="text-sm text-steel leading-relaxed">{product.description}</p>
 
-        <div className="hidden md:grid grid-cols-3 gap-2 mt-auto">
+        <div className="grid grid-cols-3 gap-2 mt-auto">
           {product.specs.map((spec) => (
             <div key={spec.label} className="rounded-lg bg-surface/60 p-2.5 border border-white/[0.04]">
               <div className="font-mono text-[0.58rem] uppercase tracking-wider text-muted mb-1">{spec.label}</div>
@@ -107,7 +120,7 @@ function ProductCard({ product, viewSpecs }: { product: Product; viewSpecs: stri
           ))}
         </div>
 
-        <div className="hidden md:flex flex-wrap gap-1.5 mt-1">
+        <div className="flex flex-wrap gap-1.5 mt-1">
           {product.applications.map((app) => (
             <span key={app} className="text-[0.65rem] text-muted border border-white/[0.06] rounded-full px-2.5 py-1">{app}</span>
           ))}
@@ -115,11 +128,11 @@ function ProductCard({ product, viewSpecs }: { product: Product; viewSpecs: stri
 
         <Link
           href={`/products/${slug}`}
-          className="flex items-center gap-1 md:gap-1.5 text-[0.65rem] md:text-sm font-semibold transition-all duration-200 group/link mt-1"
+          className="flex items-center gap-1.5 text-sm font-semibold transition-all duration-200 group/link mt-1"
           style={{ color }}
         >
           {viewSpecs}
-          <ArrowRight size={10} className="md:w-3.5 md:h-3.5 transform translate-x-0 group-hover/link:translate-x-1 transition-transform duration-200" />
+          <ArrowRight size={14} className="transform translate-x-0 group-hover/link:translate-x-1 transition-transform duration-200" />
         </Link>
       </div>
     </motion.div>
