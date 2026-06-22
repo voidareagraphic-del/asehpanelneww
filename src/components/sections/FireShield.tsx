@@ -172,10 +172,10 @@ export function FireShield() {
       {/* Sparks canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }} />
 
-      {/* Fire glow layers */}
-      <div className="fire-glow-base absolute inset-0 pointer-events-none" />
-      <div className="fire-glow-ember absolute inset-0 pointer-events-none" />
-      <div className="fire-glow-pulse absolute inset-0 pointer-events-none" />
+      {/* Fire glow layers — desktop only */}
+      <div className="fire-glow-base absolute inset-0 pointer-events-none hidden md:block" />
+      <div className="fire-glow-ember absolute inset-0 pointer-events-none hidden md:block" />
+      <div className="fire-glow-pulse absolute inset-0 pointer-events-none hidden md:block" />
 
       <style>{`
         @keyframes fireBase {
