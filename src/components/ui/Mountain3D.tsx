@@ -58,7 +58,7 @@ function Scene() {
       modelRef.current.position.sub(pivotPos);
     }
 
-    const camDistMultiplier = isMobileView ? 4.5 : 1;
+    const camDistMultiplier = isMobileView ? 1.8 : 1;
     const bPos = new THREE.Vector3(-2.3868, 0.048488, -0.91095).multiplyScalar(scale * camDistMultiplier);
     camera.position.copy(bPos);
     const euler = new THREE.Euler(
