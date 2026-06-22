@@ -273,10 +273,10 @@ export function CloudParallax({
     observer.observe(canvas);
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.innerWidth < 768) return;
 
-    const isMobile = window.innerWidth < 768;
-    const effectiveDensity = isMobile ? densityScale * 0.4 : densityScale;
-    const effectiveParticle = isMobile ? particleScale * 0.7 : particleScale;
+    const effectiveDensity = densityScale;
+    const effectiveParticle = particleScale;
 
     const resize = () => {
       canvas.width  = canvas.offsetWidth;
