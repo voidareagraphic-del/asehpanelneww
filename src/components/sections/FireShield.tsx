@@ -71,8 +71,9 @@ export function FireShield() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const isMobile = window.innerWidth < 768;
-    const SEED = isMobile ? 12 : 40;
-    const MAX = isMobile ? 18 : 55;
+    if (isMobile) return;
+    const SEED = 40;
+    const MAX = 55;
 
     const resize = () => {
       canvas.width = section.offsetWidth;
