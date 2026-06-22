@@ -63,7 +63,7 @@ export function Hero() {
       {/* Layer 3: 3D Mountain model */}
       <div
         ref={corridorRef}
-        className="absolute inset-0 will-change-transform [--hero-3d-shift:0%] md:[--hero-3d-shift:-25%]"
+        className="absolute inset-0 will-change-transform [--hero-3d-shift:0%] md:[--hero-3d-shift:-45%]"
         style={isRTL ? { transform: "translateX(var(--hero-3d-shift, 0%))" } : undefined}
       >
         <Mountain3D />
