@@ -42,7 +42,7 @@ function Scene() {
     const fov = 60 * (Math.PI / 180);
     const camZ = 0.09;
     const visibleHeight = 2 * Math.tan(fov / 2) * camZ;
-    const scale = (visibleHeight * 3.15) / size.y;
+    const scale = (visibleHeight * 2.2) / size.y;
 
     modelRef.current.scale.set(scale, scale, -scale);
     modelRef.current.position.set(-center.x * scale, -center.y * scale, -center.z * scale);
