@@ -58,7 +58,7 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
       >
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 h-[68px] flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 h-[68px] flex items-center justify-between rtl:flex-row-reverse lg:rtl:flex-row">
           <a href="/" className="group flex-shrink-0">
             <Logo size="md" />
           </a>
