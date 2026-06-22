@@ -68,6 +68,12 @@ export function FireShield() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const isMobile = window.innerWidth < 768;
+    const SEED = isMobile ? 12 : 40;
+    const MAX = isMobile ? 18 : 55;
+
     const resize = () => {
       canvas.width = section.offsetWidth;
       canvas.height = section.offsetHeight;
@@ -75,10 +81,9 @@ export function FireShield() {
     resize();
     window.addEventListener("resize", resize);
 
-    // seed initial sparks
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < SEED; i++) {
       const s = spawnSpark(canvas.width, canvas.height);
-      s.life = Math.random() * s.maxLife; // stagger
+      s.life = Math.random() * s.maxLife;
       sparksRef.current.push(s);
     }
 
@@ -86,8 +91,7 @@ export function FireShield() {
       const w = canvas.width, h = canvas.height;
       ctx.clearRect(0, 0, w, h);
 
-      // spawn new sparks to maintain density
-      if (sparksRef.current.length < 55) {
+      if (sparksRef.current.length < MAX) {
         sparksRef.current.push(spawnSpark(w, h));
       }
 

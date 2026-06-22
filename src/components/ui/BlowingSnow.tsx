@@ -22,6 +22,12 @@ export function BlowingSnow() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const isMobile = window.innerWidth < 768;
+    const MAX_PARTICLES = isMobile ? 80 : 600;
+    const SEED_COUNT = isMobile ? 60 : 500;
+
     let animId: number;
     let particles: Particle[] = [];
 
@@ -47,8 +53,7 @@ export function BlowingSnow() {
       };
     };
 
-    // seed initial particles across the canvas
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < SEED_COUNT; i++) {
       const p = spawn();
       p.x = Math.random() * canvas.width;
       particles.push(p);
@@ -57,8 +62,7 @@ export function BlowingSnow() {
     const tick = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // spawn new particles from right
-      if (particles.length < 600) particles.push(spawn());
+      if (particles.length < MAX_PARTICLES) particles.push(spawn());
 
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];

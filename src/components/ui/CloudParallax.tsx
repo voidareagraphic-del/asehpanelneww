@@ -272,13 +272,18 @@ export function CloudParallax({
     );
     observer.observe(canvas);
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const isMobile = window.innerWidth < 768;
+    const effectiveDensity = isMobile ? densityScale * 0.4 : densityScale;
+    const effectiveParticle = isMobile ? particleScale * 0.7 : particleScale;
+
     const resize = () => {
-      // cap at 1x regardless of devicePixelRatio — halves pixel work on HiDPI screens
       canvas.width  = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
       canvas.style.width  = "100%";
       canvas.style.height = "100%";
-      clouds.current = buildClouds(canvas.width, canvas.height, densityScale, particleScale);
+      clouds.current = buildClouds(canvas.width, canvas.height, effectiveDensity, effectiveParticle);
     };
     resize();
     window.addEventListener("resize", resize);

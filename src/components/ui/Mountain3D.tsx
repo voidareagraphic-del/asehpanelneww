@@ -1,9 +1,19 @@
 "use client";
 
-import { Suspense, useRef, useEffect } from "react";
+import { Suspense, useRef, useEffect, useState } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
+
+function useIsLowEnd() {
+  const [lowEnd, setLowEnd] = useState(false);
+  useEffect(() => {
+    const cores = navigator.hardwareConcurrency ?? 4;
+    const mobile = /Mobi|Android/i.test(navigator.userAgent);
+    setLowEnd(mobile && cores <= 4);
+  }, []);
+  return lowEnd;
+}
 
 function Scene() {
   const { scene } = useGLTF("/images/PRODUCT SITE.glb");
@@ -82,17 +92,32 @@ function Scene() {
 }
 
 export function Mountain3D() {
+  const lowEnd = useIsLowEnd();
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+  if (lowEnd) {
+    return (
+      <div
+        style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background: "linear-gradient(135deg, #080810 0%, #0d1020 60%, #101830 100%)",
+        }}
+      />
+    );
+  }
+
   return (
     <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
       <Canvas
         style={{ width: "100%", height: "100%", pointerEvents: "none" }}
-        gl={{ antialias: true, alpha: false }}
+        dpr={isMobile ? [1, 1] : [1, 2]}
+        gl={{ antialias: !isMobile, alpha: false, powerPreference: "high-performance" }}
         camera={{ position: [0, 4, 40], fov: 32 }}
       >
         <ambientLight intensity={2.0} color="#ffffff" />
         <directionalLight position={[4, 6, 3]} intensity={5.0} color="#fff5e0" />
-        <directionalLight position={[-5, 2, 2]} intensity={3.0} color="#a0c4ff" />
-        <directionalLight position={[-2, -1, -6]} intensity={3.0} color="#6ee7f7" />
+        {!isMobile && <directionalLight position={[-5, 2, 2]} intensity={3.0} color="#a0c4ff" />}
+        {!isMobile && <directionalLight position={[-2, -1, -6]} intensity={3.0} color="#6ee7f7" />}
         <pointLight position={[0, -4, 2]} intensity={3.0} color="#ff9f43" distance={20} />
         <pointLight position={[0, 0, 8]} intensity={4.0} color="#ffffff" distance={20} />
         <Suspense fallback={null}>
