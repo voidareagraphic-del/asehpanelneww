@@ -43,7 +43,7 @@ function Scene() {
     const camZ = 0.09;
     const visibleHeight = 2 * Math.tan(fov / 2) * camZ;
     const isMobileView = window.innerWidth < 768;
-    const scale = (visibleHeight * 3.15) / size.y;
+    const scale = (visibleHeight * 5.0) / size.y;
 
     modelRef.current.scale.set(scale, scale, -scale);
     modelRef.current.position.set(-center.x * scale, -center.y * scale, -center.z * scale);
