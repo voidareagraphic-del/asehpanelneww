@@ -122,8 +122,8 @@ export function Manufacturing() {
           })}
         </StaggerChildren>
 
-        {/* Factory video — scroll-driven */}
-        <AnimateIn delay={0.05} className="mb-5">
+        {/* Factory video — scroll-driven (desktop only) */}
+        <AnimateIn delay={0.05} className="mb-5 hidden md:block">
           <div className="rounded-2xl overflow-hidden relative h-[400px]">
             <video
               ref={videoRef}
