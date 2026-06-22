@@ -17,7 +17,6 @@ function useIsLowEnd() {
 
 function Scene() {
   const { scene } = useGLTF("/images/PRODUCT SITE.glb");
-  const { scene: camScene } = useGLTF("/images/product2.glb");
   const modelRef  = useRef<THREE.Group>(null);
   const pivotRef  = useRef<THREE.Group>(null);
   const { scene: threeScene, camera } = useThree();
@@ -67,7 +66,7 @@ function Scene() {
       "YXZ"
     );
     camera.quaternion.setFromEuler(euler);
-  }, [scene, camScene, camera]);
+  }, [scene, camera]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -129,4 +128,3 @@ export function Mountain3D() {
 }
 
 useGLTF.preload("/images/PRODUCT SITE.glb");
-useGLTF.preload("/images/product2.glb");
