@@ -22,11 +22,14 @@ export function ColdStorage() {
       {/* Background: cold storage image */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 overflow-hidden">
-          <Image src="/images/A01.webp" alt="Cold Storage" fill className="object-cover" />
+          <Image src="/images/A01.webp" alt="Cold Storage" fill className="object-cover object-center md:object-left" />
         </div>
-        {/* gradient: left-to-right */}
-        <div className="absolute inset-0"
+        {/* gradient: desktop only */}
+        <div className="absolute inset-0 hidden md:block"
           style={{ background: "linear-gradient(90deg, rgba(10,12,16,0.7) 0%, rgba(10,12,16,0.7) 30%, transparent 50%)" }} />
+        {/* mobile: subtle top/bottom fade only */}
+        <div className="absolute inset-0 md:hidden"
+          style={{ background: "linear-gradient(180deg, rgba(10,12,16,0.5) 0%, transparent 30%, transparent 70%, rgba(10,12,16,0.7) 100%)" }} />
 
       </div>
 
