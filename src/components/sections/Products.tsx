@@ -58,6 +58,7 @@ function ProductCard({ product, viewSpecs }: { product: Product; viewSpecs: stri
       variants={staggerItem}
       className="product-card group relative rounded-2xl bg-panel border border-white/[0.05] overflow-hidden flex flex-col cursor-pointer hover:border-white/10"
       style={{ boxShadow: "0 8px 48px rgba(0,0,0,0.6)" }}
+      onClick={() => window.location.href = `/products/${slug}`}
     >
       {/* Accent top border */}
       <div className="w-full h-[6px]" style={{ background: color }} />
