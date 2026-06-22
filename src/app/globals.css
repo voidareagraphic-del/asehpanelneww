@@ -130,18 +130,20 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* Persian / RTL support */
+/* ─── Persian / RTL Typography System ─── */
 [dir="rtl"] {
   font-family: "Abar", system-ui, sans-serif;
-  line-height: 2;
+  line-height: 1.9;
 }
+
 [dir="rtl"] .font-mono,
 [dir="rtl"] .eng-mono {
   font-family: var(--font-jetbrains), monospace;
   direction: ltr;
   unicode-bidi: embed;
 }
-/* Remove opacity from Persian text */
+
+/* Opacity fix */
 [dir="rtl"] h1,
 [dir="rtl"] h2,
 [dir="rtl"] h3,
@@ -152,14 +154,60 @@ body {
   color: inherit;
   --tw-text-opacity: 1 !important;
 }
-/* Persian headings line-height */
-[dir="rtl"] h1 { line-height: 2.8; }
-[dir="rtl"] .text-display-2xl {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+
+/* ─── Heading scale for Persian ─── */
+[dir="rtl"] h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 2.0;
+  letter-spacing: 0;
 }
-[dir="rtl"] h2 { line-height: 1.5; }
-[dir="rtl"] h3,
-[dir="rtl"] h4 { line-height: 1.45; }
+[dir="rtl"] h2 {
+  font-size: clamp(1.7rem, 3.8vw, 2.8rem);
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+[dir="rtl"] h3 {
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+[dir="rtl"] h4 {
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+/* display utility overrides for Persian */
+[dir="rtl"] .text-display-2xl {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+[dir="rtl"] .text-display-xl {
+  font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+[dir="rtl"] .text-display-lg {
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+/* Body text */
+[dir="rtl"] p {
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  line-height: 2;
+}
+
+/* Mobile tweaks */
+@media (max-width: 767px) {
+  [dir="rtl"] h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); line-height: 1.9; }
+  [dir="rtl"] h2 { font-size: clamp(1.4rem, 5.5vw, 1.9rem); line-height: 1.65; }
+  [dir="rtl"] h3 { font-size: clamp(1rem, 4vw, 1.25rem); }
+  [dir="rtl"] .text-display-xl { font-size: clamp(1.4rem, 5.5vw, 1.9rem); }
+  [dir="rtl"] p { font-size: 0.9rem; line-height: 1.9; }
+}
 
 @layer utilities {
   .text-display-2xl {
